@@ -54,7 +54,6 @@ Desta forma o javascript ficaria da seguinte forma</br>
  var paciente = document.querySelector("#primeiro-paciente");
  var tdPeso = document.querySelector(".info-peso");
 ```
-</br>
 
 7. Operadores Lógicos</br>
 		|| = Representa o "ou"</br>
