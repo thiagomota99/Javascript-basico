@@ -379,7 +379,7 @@ através da tag <input> que possui um valor.
 	 				alert("Uhul! Funcionou!");
 	 			}
 	 			else {
-	 				alert(Opa, algo deu errado!);
+	 				alert("Opa, algo deu errado!");
 	 			}
 	 		});		
 

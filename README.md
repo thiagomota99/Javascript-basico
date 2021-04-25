@@ -353,7 +353,7 @@ getValorCampo.addEventListener("input",function(){
 ```
 Para criar uma expressão regular cria-se um objeto do tipo RegExp que espera dois parâmetros</br>
   1 - O texto que deseja testar sobre um outro texto</br>
-  2 - Se vai ou não fazer diferenciação de letras maiúsculaas ou mínúsculas. O "i" indica insensitive. Ou seja não fará diferenciação.
+  2 - Definir flags, como a diferenciação de letras maiúsculas e mínuculas. O "i" indica "insensitive case". Ou seja não fará diferenciação.
 
 
 32. Para realizar requisições com javascript utilizamos um objeto chamado `XMLHttpRequest()`. Ele é responsável por relizar requisições Http</br>
@@ -390,7 +390,7 @@ xmlHttpRequest.addEventListener("load", function(){
 
 36. É possível realizar a conversão de requisições que devolvem como respota um JSON em um objeto ou arrays de objetos javascript. Para isso, usamos</br>
    uma função nativa do javascript chamada de `JSON.parse()`, a mesma espera como parâmetro um JSON que será convertido em um objeto javascript para</br>
-   conseguirmos manipulalo.
+   conseguirmos manipula-lo.
 ```js
 var xmlHttpRequest = new XMLHttpRequest();
 xmlHttpRequest.open("GET","http://api-pacientes.herokuapp.com/pacientes");
@@ -401,7 +401,7 @@ xmlHttpRequest.addEventListener("load", function(){
 });
 ```
 
-37. O objeto XMLHttpRequest possui a propriedade "status". Ele retorna códigos das requisições http (200,404,500). O mesmo podem ser utilizados
+37. O objeto XMLHttpRequest possui a propriedade "status". Ele retorna códigos das requisições http (200,404,500...). O mesmo podem ser utilizados
    para identificar falha ou sucesso na resposta da requisição.
 ```js
 var xmlHttpRequest = new XMLHttpRequest();
@@ -412,7 +412,7 @@ xmlHttpRequest.addEventListener("load", function(){
     alert("Uhul! Funcionou!");
   }
   else {
-    alert(Opa, algo deu errado!);
+    alert("Opa, algo deu errado!");
   }
 });   
 ```
