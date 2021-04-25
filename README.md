@@ -168,7 +168,94 @@ de seus atributos "name".
 17. Aninhando elementos html com Javascript com a função `appendChild()`. Desta forma podemos criar elementos filhos de outros elementos.</br>
 		Ex:
 ```js
- var elementoPai = document.createElement("tr"); Cria-se o elemento pai, no caso uma linha de uma tabela.
- var elementoFilho = document.createElement("td"); Cria-se o elemento filho, no caso uma coluna de uma tabela.
- elementoPai.appendChild(elementoFilho); Atribuímos o elemento filho ao elemento pai, no caso a linha possui uma coluna
+ var elementoPai = document.createElement("tr"); //Cria-se o elemento pai, no caso uma linha de uma tabela.
+ var elementoFilho = document.createElement("td"); //Cria-se o elemento filho, no caso uma coluna de uma tabela.
+ elementoPai.appendChild(elementoFilho); //Atribuímos o elemento filho ao elemento pai, no caso a linha possui uma coluna
 ```
+
+18. Criando um objeto em javascript. Definimos um nome para objeto, depois seus atributos. No caso: nome, peso, altura e gordura
+```js
+var paciente = {
+  nome: form.nome.value,
+  peso: form.peso.value,
+  altura: form.altura.value,
+  gordura: form.gordura.value
+}
+```
+
+19. A função "reset" quando atribuída a um elemento `<form>` limpa o valor de seus inputs
+```js
+var form = ducment.querySelector("form");
+form.reset();
+```
+
+20. Criando arrays em javascript com tamanho dinânimo
+   Ex: `var meuArray = [];`
+
+21. A função "push" serve para adicionar uma nova posição ao array.
+```js
+  var meuArray = [];
+  var texto = "Texto teste";
+  meuArray.push(texto);
+```
+
+22. Para criar um foreach em java script é feito da seguinte forma
+```js 
+  var meuArray = [];
+  meuArray.forEach(function(erro){
+  var texto = erro;
+});
+```
+Primeiro criamos um array qualquer.</br>
+Depois utilizamos a função `forEach()` que espera uma função anônima para ser executada</br>
+para cada item do array.</br>
+
+
+23. Para limpar o html de um elemento podemos utilizar a propriedade innerHTML
+```js
+  var ul = document.createElement("ul");
+  var li = document.createElement("li");
+  ul.appendChild(li);
+  ul.innerHTML = "";
+```
+
+24. Para remover um elemento do html usando javascript utilizamos a função `remove()`. Ela irá remover o elemento selecionado</br>
+    e seus descendentes.
+```js
+  var h1 = document.createElement("ul");
+  h1.remove();
+```
+
+25. A palavra "this" tem como objetivo atrelar um evento de click, por exemplo a um objeto. Ela garante que o evento
+   será acionado para aquele objeto que o invocou.
+
+26 - Um fato importante sobre eventos é que eles são parecidos com bolhas
+```html
+    <tbody id="tabela-pacientes">
+            <tr class="paciente">
+              <td class="info-nome">Paulo</td>
+              <td class="info-peso">1100</td>
+              <td class="info-altura">2.00</td>
+              <td class="info-gordura">10</td>
+              <td class="info-imc">0</td>
+            </tr>
+
+            <tr class="paciente">
+              <td class="info-nome">João</td>
+              <td class="info-peso">80</td>
+              <td class="info-altura">1.72</td>
+              <td class="info-gordura">40</td>
+              <td class="info-imc">0</td>
+            </tr>
+    </tbody>
+<script>
+  var addEvento = document.querySelector("#tabela-pacientes");
+  addEvento.addEventListener("click",function(){
+    console.log("Fui clicado!");
+  });
+</script>
+```
+Quando executado esse trecho de código, clique em uma coluna da tabela. O mesmo irá acionar o evento de click da tag `<tbody>`</br>
+Isso indica que o evento de click é realizado para todos os elementos filhos (diretos/indiretos). Funciona como uma bolha,</br>
+que saem do fundo do copo e vão até a superfície(quem chamou o evento). Na superfície o evento é de fato executado depois</br>
+de percorrer todos elementos descendentes.
