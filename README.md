@@ -229,7 +229,7 @@ para cada item do array.</br>
 25. A palavra "this" tem como objetivo atrelar um evento de click, por exemplo a um objeto. Ela garante que o evento
    será acionado para aquele objeto que o invocou.
 
-26 - Um fato importante sobre eventos é que eles são parecidos com bolhas
+26. Um fato importante sobre eventos é que eles são parecidos com bolhas
 ```html
     <tbody id="tabela-pacientes">
             <tr class="paciente">
@@ -259,3 +259,160 @@ Quando executado esse trecho de código, clique em uma coluna da tabela. O mesmo
 Isso indica que o evento de click é realizado para todos os elementos filhos (diretos/indiretos). Funciona como uma bolha,</br>
 que saem do fundo do copo e vão até a superfície(quem chamou o evento). Na superfície o evento é de fato executado depois</br>
 de percorrer todos elementos descendentes.
+
+27. O objeto event possui uma propriedade chamada "target" que captura o elemento que foi o alvo do evento.
+```html
+<tbody id="tabela-pacientes">
+  <tr class="paciente">
+    <td class="info-nome">Paulo</td>
+    <td class="info-peso">1100</td>
+    <td class="info-altura">2.00</td>
+    <td class="info-gordura">10</td>
+    <td class="info-imc">0</td>
+  </tr>
+
+  <tr class="paciente">
+    <td class="info-nome">João</td>
+    <td class="info-peso">80</td>
+    <td class="info-altura">1.72</td>
+    <td class="info-gordura">40</td>
+    <td class="info-imc">0</td>
+  </tr>
+</tbody>
+<script>
+  var addEvento = document.querySelector("#tabela-pacientes");
+  addEvento.addEventListener("dblclick",function(event){
+    var alvoDoEvento = event.target;
+    console.log(alvoDoEvento);
+  });
+</script>
+```    
+
+28. A propriedade "target" é também um objeto que possui a propriedade "parentNode". O mesmo irá pegar o elemento pai do elemento alvo(target)
+```html
+<tbody id="tabela-pacientes">
+  <tr class="paciente">
+    <td class="info-nome">Paulo</td>
+    <td class="info-peso">1100</td>
+    <td class="info-altura">2.00</td>
+    <td class="info-gordura">10</td>
+    <td class="info-imc">0</td>
+  </tr>
+
+  <tr class="paciente">
+    <td class="info-nome">João</td>
+    <td class="info-peso">80</td>
+    <td class="info-altura">1.72</td>
+    <td class="info-gordura">40</td>
+    <td class="info-imc">0</td>
+  </tr>
+</tbody>
+<script>
+  var addEvento = document.querySelector("#tabela-pacientes");
+  addEvento.addEventListener("dblclick",function(event){
+    var alvoDoEvento = event.target;
+    var paiDoAlvo = alvoDoEvento.parentNode;
+    console.log(alvoDoEvento);
+    console.log(paiDoAlvo);
+  });
+</script>
+```
+
+29. A função `setTimeout()` tem objetivo de delimitar um "tempo de espera" para que algo aconteça. Ela possui dois parâmetros.</br>
+   O primeiroa é função que deseja executar após o tempo de espera</br>
+   o segundo é o tempo que a função deverá esperar para ser executada. O número é definido na grandeza de milisegundos, onde 1000ms = 1s</br>
+```js
+setTimeout(function(){
+  alert("Olá Mundo!");
+},1000);
+```
+
+30. Um outro evento muito interessante é o "input" que caputura tudo que usuário inputa (digita) para dentro da aplicação. Ele pode ser capturado
+através da tag `<input>` que possui um valor.
+```js
+var getValorCampo = document.querySelector("input");
+getValorCampo.addEventListener("input",function(){
+  var texto = "oi"
+  if(texto == getValorCampo.value){
+    alert("Olá");
+  }
+});
+```
+
+31. Para buscar textos ou trechos de um uma forma fácil de implementar é usando Expressõe Regulares, o javascript possui expressões relugares que podemos
+   utlizar da seguinte forma:
+```js
+var getValorCampo = document.querySelector("input");
+getValorCampo.addEventListener("input",function(){
+  var vogais = "AEIOU";
+  var expressao = new RegExp(getValorCampo.value,"i");
+  if(expressao.test(vogais)){
+    alert("É uma vogal");
+  }
+});
+```
+Para criar uma expressão regular cria-se um objeto do tipo RegExp que espera dois parâmetros</br>
+  1 - O texto que deseja testar sobre um outro texto</br>
+  2 - Se vai ou não fazer diferenciação de letras maiúsculaas ou mínúsculas. O "i" indica insensitive. Ou seja não fará diferenciação.
+
+
+32. Para realizar requisições com javascript utilizamos um objeto chamado `XMLHttpRequest()`. Ele é responsável por relizar requisições Http</br>
+   de todos os tipos(GET,POST,DELETE,PUT) e trefegar vários tipos de dados (XML,HTML,JSON). Para instanciar um objeto dessa classe utlizamos</br>
+   a seguinte sintaxe: `var xmlHttpRequest = new XMLHttpRequest();`
+
+
+33. O método `open()` do objeto XMLHttpRequest tem objetivo de abrir a conexão que se deseja realizar. A mesma espera dois parâmetros</br>
+   1 - O tipo da requisição = Verbos Http (GET,POST,DELETE,PUT)</br>
+   2 - O endereço http para qual deseja fazer a requisicao www.xyz.com.br/compras
+```js
+var xmlHttpRequest = new XMLHttpRequest();
+xmlHttpRequest.open("GET","www.xyz.com.br/compras");
+```
+
+34. O método `send()` do objeto XMLHttpRequest tem objetivo de enviar a requisição previamente configurada no método `open();`
+```js      
+var xmlHttpRequest = new XMLHttpRequest();
+xmlHttpRequest.open("GET","www.xyz.com.br/compras");
+xmlHttpRequest.send();
+```
+
+35. Para exibirmos os dados da requisição através do objeto XMLHttpRequest. Utilizamos o evento de "load" que ira nos retornar a response (respota)</br>
+   da requisição realizada assim que terminar de carregar a requisição. Desta forma, podemos exibir os dados de resposta com a propreidade do</br>
+   XMLHttpRequest chamada de "responseText".
+```js
+var xmlHttpRequest = new XMLHttpRequest();
+xmlHttpRequest.open("GET","www.xyz.com.br/compras");
+xmlHttpRequest.send();
+xmlHttpRequest.addEventListener("load", function(){
+  console.log(xhr.responseText);
+});
+```
+
+36. É possível realizar a conversão de requisições que devolvem como respota um JSON em um objeto ou arrays de objetos javascript. Para isso, usamos</br>
+   uma função nativa do javascript chamada de `JSON.parse()`, a mesma espera como parâmetro um JSON que será convertido em um objeto javascript para</br>
+   conseguirmos manipulalo.
+```js
+var xmlHttpRequest = new XMLHttpRequest();
+xmlHttpRequest.open("GET","http://api-pacientes.herokuapp.com/pacientes");
+xmlHttpRequest.send();
+xmlHttpRequest.addEventListener("load", function(){
+  var resposta = JSON.parse(xhr.responseText);
+  alert(resposta.nome);
+});
+```
+
+37. O objeto XMLHttpRequest possui a propriedade "status". Ele retorna códigos das requisições http (200,404,500). O mesmo podem ser utilizados
+   para identificar falha ou sucesso na resposta da requisição.
+```js
+var xmlHttpRequest = new XMLHttpRequest();
+xmlHttpRequest.open("GET","http://api-pacientes.herokuapp.com/pacientes");
+xmlHttpRequest.send();
+xmlHttpRequest.addEventListener("load", function(){
+  if(xmlHttpRequest.status == 200){// => 200 = OK.        
+    alert("Uhul! Funcionou!");
+  }
+  else {
+    alert(Opa, algo deu errado!);
+  }
+});   
+```
