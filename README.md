@@ -1,11 +1,11 @@
 # Curso de Javascript
- Esse projeto tem o intuito de explicar conceitos e funções básicas do javasscript<br>
- Estarei colocando aqui várias anotações relacionadas a linguagem e suas funções<br>
+ Esse projeto tem o intuito de explicar conceitos e funções básicas do javascript.<br>
+ Estarei colocando aqui várias anotações relacionadas a linguagem e suas funções,<br>
  explicando com exemplos práticos.
 
 ## Repositório é composto de:
 1. Arquivos html (index e atividadeDeFixacao)
-2. Diretório com os scripts javascripts
+2. Diretório com os scripts javascript
 3. Diretório com a folha de estilo da página html
 4. Ícone da página html
 
